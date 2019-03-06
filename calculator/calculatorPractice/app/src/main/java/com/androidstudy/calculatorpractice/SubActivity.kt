@@ -10,7 +10,6 @@ import net.objecthunter.exp4j.ExpressionBuilder
 import org.w3c.dom.Text
 import java.lang.Exception
 
-// 연산자 두번 눌리면 안됨, 우선순위따지기
 class SubActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -74,17 +73,20 @@ class SubActivity : AppCompatActivity() {
             tv_result.text = ""
             tv_Expression.append(string)
         } else { // 연산자나 지우는게 들어오면 //처음에 눌리면 안되게 하기
-            var lengthOfExpression = tv_Expression.text.substring(tv_Expression.text.length-1,tv_Expression.text.length)
-            if(tv_Expression.text==""){
-                tv_Expression.text=""
-            } else if(lengthOfExpression== "/" ||lengthOfExpression =="*"||lengthOfExpression =="+"||lengthOfExpression =="-"){
-                tv_Expression.text= tv_Expression.text
-            }else {
-                tv_Expression.append(tv_result.text)
-                tv_Expression.append(string)
-                tv_result.text = ""
+            if(tv_Expression.text.length-1>0) {
+                var lengthOfExpression =
+                    tv_Expression.text.substring(tv_Expression.text.length - 1, tv_Expression.text.length)
+
+                if (tv_Expression.text == "") {
+                    tv_Expression.text = ""
+                } else if (lengthOfExpression == "/" || lengthOfExpression == "*" || lengthOfExpression == "+" || lengthOfExpression == "-") {
+                    tv_Expression.text = tv_Expression.text
+                } else {
+                    tv_Expression.append(tv_result.text)
+                    tv_Expression.append(string)
+                    tv_result.text = ""
+                }
             }
         }
     }
-
 }
