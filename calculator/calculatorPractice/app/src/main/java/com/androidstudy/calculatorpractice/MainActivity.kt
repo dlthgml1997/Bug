@@ -15,7 +15,8 @@ import org.w3c.dom.Text
 import java.util.ArrayList
 import kotlin.math.sign
 
-class MainActivity : AppCompatActivity() {
+class
+MainActivity : AppCompatActivity() {
     var str: String = ""
     var str1: String = ""
     var result : Double? = null
