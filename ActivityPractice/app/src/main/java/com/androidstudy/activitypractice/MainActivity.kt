@@ -13,6 +13,7 @@ class MainActivity : AppCompatActivity() {
 
         btn_main_act_next_page.setOnClickListener {
             val intent : Intent = Intent(this,SubActivity::class.java)
+            intent.putExtra("message",et_main_act_message.text.toString())
             startActivity(intent)
         }
     }
